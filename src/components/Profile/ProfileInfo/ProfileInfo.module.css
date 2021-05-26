@@ -1,0 +1,24 @@
+.content {
+  background-color: aqua;
+}
+
+.content img {
+  width: 1070px;
+}
+
+.ava img {
+  width: 150px;
+  border: 10px solid black;
+}
+
+.avaDis{
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  padding: 20px;
+}
+
+.description {
+  font-size: 25px;
+  display: grid;
+  grid-template-columns: 4fr 10fr;
+}

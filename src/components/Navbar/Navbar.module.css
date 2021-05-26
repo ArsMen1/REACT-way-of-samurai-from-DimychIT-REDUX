@@ -1,0 +1,32 @@
+.nav {
+    grid-area: n;
+    background-color: darkblue;
+    padding: 20px;
+}
+
+
+.item a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: "Agency FB";
+}
+
+.item a.activeLink {
+    color: aqua;
+}
+
+.item a:hover {
+    color: gold;
+}
+
+.friends {
+    font-size: 30px;
+    font-family: "Agency FB";
+    padding: 30px;
+}
+
+.friends a {
+    color: white;
+    text-decoration: none;
+}
