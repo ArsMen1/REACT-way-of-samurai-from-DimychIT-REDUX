@@ -7,8 +7,7 @@ import Message from "./Message/Message";
 //КОмпоненты Контактов и сообщений
 const Dialogs = (props) => {
     const dialogsElements = props.state.dialogs.map(d => <DialogItem ava={d.ava} name={d.name} id={d.id}/>)
-    const messagesElements = props.state.messages.map(m => <Message messageIam={m.messageIam}
-                                                                    messageFriend={m.messageFriend}/>)
+    const messagesElements = props.state.messages.map(m => <Message messageIam={m.messageIam} messageFriend={m.messageFriend}/>)
 
     const newMessages = React.createRef()
 
