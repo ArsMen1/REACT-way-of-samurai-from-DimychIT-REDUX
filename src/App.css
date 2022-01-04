@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .app-wrapper {
   margin: 0;
   display: grid;
@@ -7,9 +11,8 @@
     "n c ";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
-  /* grid-gap: 10px; */
 }
 
-.app-wrapper-content{
-background-color: aqua;
+.app-wrapper-content {
+  background-color: aqua;
 }
