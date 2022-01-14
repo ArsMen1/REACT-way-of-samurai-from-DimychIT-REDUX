@@ -2,8 +2,11 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {
+  addMessageActionCreator,
+  updateNewMessageTextActionCreator,
+} from "../../redux/dialogsReducer";
 
-//КОмпоненты Контактов и сообщений
 const Dialogs = (props) => {
   const dialogsElements = props.state.dialogs.map((d) => (
     <DialogItem ava={d.ava} name={d.name} id={d.id} />
@@ -15,13 +18,12 @@ const Dialogs = (props) => {
   const newMessages = React.createRef();
 
   const addMessages = () => {
-    props.dispatch({ type: "ADD-MESSAGE" });
+    props.dispatch(addMessageActionCreator());
   };
 
   const onMessageChange = () => {
     const text = newMessages.current.value;
-    let action = { type: "UPDATE-NEW-MESSAGE-TEXT", messageText: text };
-    props.dispatch(action);
+    props.dispatch(updateNewMessageTextActionCreator(text));
   };
 
   return (
@@ -30,6 +32,7 @@ const Dialogs = (props) => {
       <div className={s.messages}>
         {messagesElements}
         <textarea
+          placeholder="Введите новое сообщение"
           onChange={onMessageChange}
           ref={newMessages}
           value={props.state.newMessagesText}
