@@ -1,5 +1,4 @@
 import s from "./Post.module.css";
-import MyPosts from "../MyPosts";
 
 const Post = (props) => {
   return (
