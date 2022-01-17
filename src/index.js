@@ -4,24 +4,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import SoreContext from "./storeContext/StoreContext";
+import { Provider } from "react-redux";
 
-export const renderEntireTree = (state) => {
+export const renderEntireTree = () => {
   ReactDOM.render(
     <BrowserRouter>
-      <SoreContext.Provider value={store}>
+      <Provider store={store}>
         <App />
-      </SoreContext.Provider>
+      </Provider>
     </BrowserRouter>,
     document.getElementById("root")
   );
 };
 
-renderEntireTree(store.getState());
+renderEntireTree();
 
 store.subscribe(() => {
-  let state = store.getState();
-  renderEntireTree(state);
+  renderEntireTree();
 });
 
 // If you want to start measuring performance in your app, pass a function
