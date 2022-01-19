@@ -9,11 +9,11 @@ import Music from "./components/Music/Music";
 import Friends from "./components/AllFriends/Friends";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-const App = (props) => {
+const App = () => {
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar state={props.state.sidebarReducer} />
+      <Navbar /> {/*state={props.state.sidebarReducer} */}
       <div className="app-wrapper-content">
         <Route path="/news" render={() => <News />} />
         <Route path="/dialogs" render={() => <DialogsContainer />} />

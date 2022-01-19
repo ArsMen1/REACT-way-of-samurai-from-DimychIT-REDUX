@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom";
 import FriendsOnln from "../AllFriends/FriendsOnline/FriendsOnln";
 import React from "react";
 
-const Navbar = (props) => {
-  const friendElements = props.state.friend.map((f) => (
-    <FriendsOnln ava={f.ava} name={f.name} />
-  ));
+const Navbar = () => {
+  // const friendElements = state.friend.map((f) => (
+  //   <FriendsOnln ava={f.ava} name={f.name} />
+  // ));
   return (
     <nav className={s.nav}>
       <div className={s.item}>
@@ -38,7 +38,7 @@ const Navbar = (props) => {
         <NavLink to="/Friends" activeClassName={s.activeLink}>
           Друзья Онлайн
         </NavLink>
-        {friendElements}
+        {/* {friendElements} */}
       </div>
     </nav>
   );
