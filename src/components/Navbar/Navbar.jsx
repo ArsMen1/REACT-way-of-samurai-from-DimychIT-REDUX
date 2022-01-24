@@ -1,6 +1,6 @@
 import s from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
-import FriendsOnln from "../AllFriends/FriendsOnline/FriendsOnln";
+//import FriendsOnln from "../AllFriends/FriendsOnline/FriendsOnln";
 import React from "react";
 
 const Navbar = () => {
