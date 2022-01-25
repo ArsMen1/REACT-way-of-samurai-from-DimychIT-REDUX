@@ -6,7 +6,7 @@ import News from "./components/News/News";
 import { Route } from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
-import Friends from "./components/AllFriends/Friends";
+import UsersConyainer from "./components/Users/UsersContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = () => {
@@ -18,9 +18,9 @@ const App = () => {
         <Route path="/news" render={() => <News />} />
         <Route path="/dialogs" render={() => <DialogsContainer />} />
         <Route path="/profile" render={() => <Profile />} />
-        <Route path="/Music" render={() => <Music />} />
+        <Route path="/music" render={() => <Music />} />
         <Route path="/settings" render={() => <Settings />} />
-        <Route path="/friends" render={() => <Friends />} />
+        <Route path="/users" render={() => <UsersConyainer />} />
       </div>
     </div>
   );
