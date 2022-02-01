@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  followAC,
-  setUsersAC,
-  setCurrentPageAC,
-  setTotalUsersCountAC,
-  unfollowAC,
-  toggleIsFethcingAC,
+  follow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  unfollow,
+  toggleIsFethcing,
 } from "../../redux/usersReducer";
 import * as axios from "axios";
 import Users from "./Users";
@@ -28,6 +28,7 @@ class UsersContainer extends React.Component {
 
   onPageChanget = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
+    this.props.toggleIsFethcing(true);
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
@@ -66,27 +67,11 @@ let mapStateToProps = (state) => {
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (userID) => {
-      dispatch(followAC(userID));
-    },
-    unfollow: (userID) => {
-      dispatch(unfollowAC(userID));
-    },
-    setUsers: (users) => {
-      dispatch(setUsersAC(users));
-    },
-    setCurrentPage: (pageNumber) => {
-      dispatch(setCurrentPageAC(pageNumber));
-    },
-    setTotalUsersCount: (totalCount) => {
-      dispatch(setTotalUsersCountAC(totalCount));
-    },
-    toggleIsFethcing: (isFetching) => {
-      dispatch(toggleIsFethcingAC(isFetching));
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+  follow,
+  unfollow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleIsFethcing,
+})(UsersContainer);
