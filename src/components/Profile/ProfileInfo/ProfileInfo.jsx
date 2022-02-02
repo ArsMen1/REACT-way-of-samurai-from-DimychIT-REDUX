@@ -17,7 +17,9 @@ const ProfileInfo = (props) => {
           <img src={props.profile.photos.large} alt="ava" />
         </div>
         <div className={s.description}>
-          <div className="me">Осипов Арсен</div>
+          <div className="me">
+            {props.profile.fullName ? props.profile.fullName : "Осипов Арсен"}
+          </div>
           <div className={s.status}>Мечтаю</div>
           <div className="me">Дата рождения:</div>
           <div className="me">08/03/1998г</div>
