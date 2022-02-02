@@ -1,6 +1,11 @@
+import Preloader from "../../common/Preloader/Preloader";
 import s from "./ProfileInfo.module.css";
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />;
+  }
+
   return (
     <div className={s.content}>
       <img
@@ -9,10 +14,7 @@ const ProfileInfo = () => {
       />
       <div className={s.avaDis}>
         <div className={s.ava}>
-          <img
-            src="https://fs1.inspider.ru/photo/2013/03/28/a97d5cc5ca99fb659ff6522f95c92bc0.jpg"
-            alt="ava"
-          />
+          <img src={props.profile.photos.large} alt="ava" />
         </div>
         <div className={s.description}>
           <div className="me">Осипов Арсен</div>

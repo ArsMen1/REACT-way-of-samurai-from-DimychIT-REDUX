@@ -16,6 +16,7 @@ let initialState = {
     },
   ],
   newPostText: "Новый текст",
+  profile: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -30,6 +31,7 @@ const profileReducer = (state = initialState, action) => {
             message: state.newPostText,
             likeCount: 0,
             name: "Гость",
+            ava: "https://i09.fotocdn.net/s113/81eac8fc2c1cb2e3/user_s/2551970780.jpg",
           },
         ],
         newPostText: "",
@@ -37,6 +39,9 @@ const profileReducer = (state = initialState, action) => {
     }
     case "UPDATE-NEW-POST-TEXT": {
       return { ...state, newPostText: action.newText };
+    }
+    case "SET_USER_PROFILE": {
+      return { ...state, profile: action.profile };
     }
     default:
       return state;
@@ -48,6 +53,11 @@ export const addPostActionCreator = () => ({ type: "ADD-POST" });
 export const updateNewPostTextActionCreator = (text) => ({
   type: "UPDATE-NEW-POST-TEXT",
   newText: text,
+});
+
+export const setUserProfile = (profile) => ({
+  type: "SET_USER_PROFILE",
+  profile,
 });
 
 export default profileReducer;

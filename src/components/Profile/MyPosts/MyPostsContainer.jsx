@@ -13,6 +13,7 @@ let mapStateToProps = (state) => {
     newPostText: state.profileReducer.newPostText,
   };
 };
+
 let mapDispatchToProps = (dispatch) => {
   return {
     updateNewPostText: (text) => {
