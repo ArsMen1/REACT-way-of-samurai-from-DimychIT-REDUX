@@ -8,7 +8,6 @@ let Users = (props) => {
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-
   return (
     <div>
       <div>
@@ -44,7 +43,9 @@ let Users = (props) => {
             <div>
               {u.followed ? (
                 <button
+                  disabled={props.followingProgress.some((id) => id === u.id)}
                   onClick={() => {
+                    props.toggleFollowingProgress(true, u.id);
                     userAPI.unfollow(u, props);
                   }}
                 >
@@ -52,7 +53,9 @@ let Users = (props) => {
                 </button>
               ) : (
                 <button
+                  disabled={props.followingProgress.some((id) => id === u.id)}
                   onClick={() => {
+                    props.toggleFollowingProgress(true, u.id);
                     userAPI.follow(u, props);
                   }}
                 >

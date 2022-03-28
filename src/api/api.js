@@ -19,6 +19,7 @@ export const userAPI = {
       if (response.data.resultCode === 0) {
         props.follow(u.id);
       }
+      props.toggleFollowingProgress(false, u.id);
     });
   },
   unfollow(u, props) {
@@ -26,6 +27,7 @@ export const userAPI = {
       if (response.data.resultCode === 0) {
         props.unfollow(u.id);
       }
+      props.toggleFollowingProgress(false, u.id);
     });
   },
   getMePage(userId, props) {
