@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { userAPI } from "../../api/api";
 import s from "./Users.module.css";
 
 let Users = (props) => {
@@ -44,7 +45,7 @@ let Users = (props) => {
               {u.followed ? (
                 <button
                   onClick={() => {
-                    props.unfollow(u.id);
+                    userAPI.unfollow(u, props);
                   }}
                 >
                   Unfollow
@@ -52,7 +53,7 @@ let Users = (props) => {
               ) : (
                 <button
                   onClick={() => {
-                    props.follow(u.id);
+                    userAPI.follow(u, props);
                   }}
                 >
                   Follow

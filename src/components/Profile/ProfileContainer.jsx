@@ -1,20 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as axios from "axios";
 import Profile from "./Profile";
 import { setUserProfile } from "../../redux/profileReducer";
 import { withRouter } from "react-router-dom";
+import { userAPI } from "../../api/api";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId;
-    if (!userId) userId = 2; //Выбор Моей страницы
+    if (!userId) userId = 2; //Выбор Моей страницы при отсутстивии страница димыча
 
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-      .then((response) => {
-        this.props.setUserProfile(response.data);
-      });
+    userAPI.getMePage(userId, this.props);
   }
   render() {
     return <Profile {...this.props} />;
