@@ -1,3 +1,7 @@
+import { userAPI } from "../api/api";
+import { setAuthUserData } from "./authReducer";
+import { setUserProfile } from "./profileReducer";
+
 let initialState = {
   users: [],
   pageSize: 10,
@@ -49,9 +53,9 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const follow = (userId) => ({ type: "FOLLOW", userId });
+export const followSuccsess = (userId) => ({ type: "FOLLOW", userId });
 
-export const unfollow = (userId) => ({ type: "UNFOLLOW", userId });
+export const unfollowSuccsess = (userId) => ({ type: "UNFOLLOW", userId });
 
 export const setUsers = (users) => ({ type: "SET_USERS", users });
 
@@ -75,5 +79,59 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
   isFetching,
   userId,
 });
+
+export const getUsers = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(toggleIsFethcing(true));
+    userAPI.getUsers(currentPage, pageSize).then((data) => {
+      dispatch(toggleIsFethcing(false));
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUsersCount(data.totalCount));
+    });
+  };
+};
+
+export const unfollow = (uId) => {
+  return (dispatch) => {
+    dispatch(toggleFollowingProgress(true, uId));
+    userAPI.unfollow(uId).then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(unfollowSuccsess(uId));
+      }
+      dispatch(toggleFollowingProgress(false, uId));
+    });
+  };
+};
+
+export const follow = (uId) => {
+  return (dispatch) => {
+    dispatch(toggleFollowingProgress(true, uId));
+    userAPI.follow(uId).then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(followSuccsess(uId));
+      }
+      dispatch(toggleFollowingProgress(false, uId));
+    });
+  };
+};
+
+export const getMePage = (userId) => {
+  return (dispatch) => {
+    userAPI.getMePage(userId).then((response) => {
+      dispatch(setUserProfile(response.data));
+    });
+  };
+};
+
+export const authMe = () => {
+  return (dispatch) => {
+    userAPI.authMe().then((response) => {
+      if (response.data.resultCode === 0) {
+        let { id, login, email } = response.data.data;
+        dispatch(setAuthUserData(id, email, login));
+      }
+    });
+  };
+};
 
 export default usersReducer;

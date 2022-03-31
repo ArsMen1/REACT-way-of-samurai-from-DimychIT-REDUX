@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import Profile from "./Profile";
 import { setUserProfile } from "../../redux/profileReducer";
 import { withRouter } from "react-router-dom";
-import { userAPI } from "../../api/api";
+import { getMePage } from "../../redux/usersReducer";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId;
     if (!userId) userId = 2; //Выбор Моей страницы при отсутстивии страница димыча
 
-    userAPI.getMePage(userId, this.props);
+    this.props.getMePage(userId);
   }
   render() {
     return <Profile {...this.props} />;
@@ -25,6 +25,6 @@ let mapStateToProps = (state) => {
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, { setUserProfile })(
+export default connect(mapStateToProps, { setUserProfile, getMePage })(
   WithUrlDataContainerComponent
 );

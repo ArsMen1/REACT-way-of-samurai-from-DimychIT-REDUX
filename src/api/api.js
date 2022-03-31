@@ -14,25 +14,16 @@ export const userAPI = {
       .get(`users?page=${currentPage}&count=${pageSize}`)
       .then((response) => response.data); // Возвращаем не весь респонс а только необходимые коспоненте данные
   },
-  follow(u, props) {
-    return instance.post(`follow/${u.id}`, {}, {}).then((response) => {
-      if (response.data.resultCode === 0) {
-        props.follow(u.id);
-      }
-      props.toggleFollowingProgress(false, u.id);
-    });
+  follow(uId) {
+    return instance.post(`follow/${uId}`, {}, {});
   },
-  unfollow(u, props) {
-    return instance.delete(`follow/${u.id}`, {}).then((response) => {
-      if (response.data.resultCode === 0) {
-        props.unfollow(u.id);
-      }
-      props.toggleFollowingProgress(false, u.id);
-    });
+  unfollow(uId) {
+    return instance.delete(`follow/${uId}`, {});
   },
-  getMePage(userId, props) {
-    return instance.get(`profile/${userId}`).then((response) => {
-      props.setUserProfile(response.data);
-    });
+  getMePage(uId) {
+    return instance.get(`profile/${uId}`);
+  },
+  authMe() {
+    return instance.get(`auth/me`, {});
   },
 };
