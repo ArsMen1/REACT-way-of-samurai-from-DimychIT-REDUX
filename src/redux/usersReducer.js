@@ -1,6 +1,4 @@
 import { userAPI } from "../api/api";
-import { setAuthUserData } from "./authReducer";
-import { setUserProfile } from "./profileReducer";
 
 let initialState = {
   users: [],
@@ -91,6 +89,18 @@ export const getUsers = (currentPage, pageSize) => {
   };
 };
 
+export const getPageNumber = (pageNumber, pageSize) => {
+  return (dispatch) => {
+    dispatch(setCurrentPage(pageNumber));
+    dispatch(toggleIsFethcing(true));
+    userAPI.getUsers(pageNumber, pageSize).then((data) => {
+      dispatch(toggleIsFethcing(false));
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUsersCount(data.totalCount));
+    });
+  };
+};
+
 export const unfollow = (uId) => {
   return (dispatch) => {
     dispatch(toggleFollowingProgress(true, uId));
@@ -111,25 +121,6 @@ export const follow = (uId) => {
         dispatch(followSuccsess(uId));
       }
       dispatch(toggleFollowingProgress(false, uId));
-    });
-  };
-};
-
-export const getMePage = (userId) => {
-  return (dispatch) => {
-    userAPI.getMePage(userId).then((response) => {
-      dispatch(setUserProfile(response.data));
-    });
-  };
-};
-
-export const authMe = () => {
-  return (dispatch) => {
-    userAPI.authMe().then((response) => {
-      if (response.data.resultCode === 0) {
-        let { id, login, email } = response.data.data;
-        dispatch(setAuthUserData(id, email, login));
-      }
     });
   };
 };

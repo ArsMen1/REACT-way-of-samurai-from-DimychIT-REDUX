@@ -1,3 +1,5 @@
+import { userAPI } from "../api/api";
+
 let initialState = {
   posts: [
     {
@@ -59,5 +61,11 @@ export const setUserProfile = (profile) => ({
   type: "SET_USER_PROFILE",
   profile,
 });
+
+export const getUserProfile = (userId) => (dispatch) => {
+  userAPI.getMePage(userId).then((response) => {
+    dispatch(setUserProfile(response.data));
+  });
+};
 
 export default profileReducer;

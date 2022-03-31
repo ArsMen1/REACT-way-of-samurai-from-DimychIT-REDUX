@@ -6,6 +6,7 @@ import {
   unfollow,
   toggleFollowingProgress,
   getUsers,
+  getPageNumber,
 } from "../../redux/usersReducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
@@ -16,7 +17,7 @@ class UsersContainer extends React.Component {
   }
 
   onPageChanget = (pageNumber) => {
-    this.props.getUsers(pageNumber, this.props.pageSize);
+    this.props.getPageNumber(pageNumber, this.props.pageSize);
   };
 
   render() {
@@ -55,4 +56,5 @@ export default connect(mapStateToProps, {
   setCurrentPage,
   toggleFollowingProgress,
   getUsers,
+  getPageNumber,
 })(UsersContainer);
