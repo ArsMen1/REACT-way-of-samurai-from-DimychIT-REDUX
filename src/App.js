@@ -8,6 +8,7 @@ import UsersConyainer from "./components/Users/UsersContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/music" render={() => <Music />} />
         <Route path="/settings" render={() => <Settings />} />
         <Route path="/users" render={() => <UsersConyainer />} />
+        <Route path="/login" render={() => <Login />} />
       </div>
     </div>
   );

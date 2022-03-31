@@ -11,8 +11,10 @@ import Dialogs from "./Dialogs";
 let mapStateToProps = (state) => {
   return {
     dialogsPage: state.dialogsReducer,
+    isAuth: state.authReducer.isAuth,
   };
 };
+
 let mapDispatchToProps = (dispatch) => {
   return {
     updateNewMessageText: (text) => {
