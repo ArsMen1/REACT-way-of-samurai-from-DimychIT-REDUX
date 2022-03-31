@@ -8,7 +8,7 @@ import { Redirect } from "react-router-dom";
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId;
-    if (!userId) userId = 2; //Выбор Моей страницы при отсутстивии страница димыча
+    if (!userId) userId = 22237; //Выбор Моей страницы даже если она не найдена)
 
     this.props.getUserProfile(userId);
   }

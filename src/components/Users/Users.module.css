@@ -6,3 +6,7 @@
 .selectPage {
   color: brown;
 }
+
+.pages span {
+  cursor: pointer;
+}

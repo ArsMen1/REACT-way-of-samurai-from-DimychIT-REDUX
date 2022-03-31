@@ -13,7 +13,7 @@ let Users = (props) => {
 
   return (
     <div>
-      <div>
+      <div className={s.pages}>
         {pages.map((p) => {
           return (
             <span
