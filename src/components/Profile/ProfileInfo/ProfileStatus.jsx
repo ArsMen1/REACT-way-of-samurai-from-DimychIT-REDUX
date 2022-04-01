@@ -6,13 +6,13 @@ class ProfileStatus extends React.Component {
     editMode: false,
   };
 
-  activeEditMode() {
+  activeEditMode = () => {
     this.setState({ editMode: true });
-  }
+  };
 
-  deactiveEditMode() {
+  deactiveEditMode = () => {
     this.setState({ editMode: false });
-  }
+  };
 
   render() {
     return (
@@ -21,13 +21,13 @@ class ProfileStatus extends React.Component {
           <div className={s.statusInput}>
             <input
               autoFocus={true}
-              onBlur={this.deactiveEditMode.bind(this)}
+              onBlur={this.deactiveEditMode}
               value={this.props.profile.aboutMe}
             />
           </div>
         ) : (
           <div className={s.status}>
-            <span onDoubleClick={this.activeEditMode.bind(this)}>
+            <span onDoubleClick={this.activeEditMode}>
               {this.props.profile.aboutMe
                 ? this.props.profile.aboutMe
                 : "Статус не установлен"}
