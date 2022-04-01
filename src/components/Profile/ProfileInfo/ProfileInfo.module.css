@@ -27,3 +27,7 @@
   width: 30px;
   height: 30px;
 }
+
+.status span{
+  display: block;
+}

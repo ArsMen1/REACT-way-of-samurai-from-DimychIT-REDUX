@@ -1,5 +1,6 @@
 import Preloader from "../../common/Preloader/Preloader";
 import s from "./ProfileInfo.module.css";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -31,11 +32,7 @@ const ProfileInfo = (props) => {
           <div>
             {props.profile.fullName ? props.profile.fullName : "Осипов Арсен"}
           </div>
-          <div className={s.status}>
-            {props.profile.aboutMe
-              ? props.profile.aboutMe
-              : "Статус не установлен"}
-          </div>
+          <ProfileStatus {...props} />
           <div>Поиск работы:</div>
           <div>
             {props.profile.lookingForAJobDescription
