@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 import s from "./Users.module.css";
 
 let Users = (props) => {
@@ -8,8 +7,6 @@ let Users = (props) => {
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-
-  if (!props.isAuth) return <Redirect to={"/login"} />;
 
   return (
     <div>

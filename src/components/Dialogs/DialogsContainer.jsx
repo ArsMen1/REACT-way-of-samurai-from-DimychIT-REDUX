@@ -1,4 +1,4 @@
-//import React from "react";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
 import { connect } from "react-redux";
 
 import {
@@ -11,7 +11,6 @@ import Dialogs from "./Dialogs";
 let mapStateToProps = (state) => {
   return {
     dialogsPage: state.dialogsReducer,
-    isAuth: state.authReducer.isAuth,
   };
 };
 
@@ -26,6 +25,11 @@ let mapDispatchToProps = (dispatch) => {
   };
 };
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+let AuthRedirectComponent = withAuthRedirect(Dialogs);
+
+const DialogsContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AuthRedirectComponent);
 
 export default DialogsContainer;
