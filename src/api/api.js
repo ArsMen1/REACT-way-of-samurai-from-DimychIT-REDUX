@@ -20,10 +20,19 @@ export const userAPI = {
   unfollow(uId) {
     return instance.delete(`follow/${uId}`, {});
   },
+  authMe() {
+    return instance.get(`auth/me`, {}); // Зачем вторым параметром обьект?
+  },
+};
+
+export const profileAPI = {
   getMePage(uId) {
     return instance.get(`profile/${uId}`);
   },
-  authMe() {
-    return instance.get(`auth/me`, {});
+  getStatus(uId) {
+    return instance.get(`profile/status/${uId}`);
+  },
+  updateStatus(status) {
+    return instance.put(`profile/status`, { status });
   },
 };

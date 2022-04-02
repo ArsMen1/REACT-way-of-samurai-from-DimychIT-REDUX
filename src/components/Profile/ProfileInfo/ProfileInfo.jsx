@@ -21,18 +21,18 @@ const ProfileInfo = (props) => {
         <div className={s.ava}>
           <img
             src={
-              props.profile.photos.small
-                ? props.profile.photos.small
-                : "https://i07.fotocdn.net/s120/5ccfac92c7e414b4/gallery_s/2746596264.jpg"
+              props.profile.photos.small ||
+              "https://i07.fotocdn.net/s120/5ccfac92c7e414b4/gallery_s/2746596264.jpg"
             }
             alt=""
           />
         </div>
         <div className={s.description}>
-          <div>
-            {props.profile.fullName ? props.profile.fullName : "Осипов Арсен"}
-          </div>
-          <ProfileStatus {...props} />
+          <div>{props.profile.fullName || "Осипов Арсен"}</div>
+          <ProfileStatus
+            status={props.status}
+            updateStatus={props.updateStatus}
+          />
           <div>Поиск работы:</div>
           <div>
             {props.profile.lookingForAJobDescription
