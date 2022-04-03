@@ -35,7 +35,6 @@ let initialState = {
     },
     { id: "4", messageIam: "хахаахах", messageFriend: "HI Приезжай" },
   ],
-  newMessagesText: "Новое сообщение",
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -48,27 +47,20 @@ const dialogsReducer = (state = initialState, action) => {
           ...state.messages,
           {
             id: 6,
-            messageIam: state.newMessagesText,
+            messageIam: action.newMessagesText,
           },
         ],
       };
     }
-    case "UPDATE-NEW-MESSAGE-TEXT": {
-      return {
-        ...state,
-        newMessagesText: action.messageText,
-      };
-    }
+
     default:
       return state;
   }
 };
 
-export const addMessageActionCreator = () => ({ type: "ADD-MESSAGE" });
-
-export const updateNewMessageTextActionCreator = (text) => ({
-  type: "UPDATE-NEW-MESSAGE-TEXT",
-  messageText: text,
+export const addMessageActionCreator = (newMessagesText) => ({
+  type: "ADD-MESSAGE",
+  newMessagesText,
 });
 
 export default dialogsReducer;

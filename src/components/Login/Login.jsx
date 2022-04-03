@@ -11,7 +11,7 @@ const LoginForm = (props) => {
         <Field name={"password"} placeholder={"Password"} component={"input"} />
       </div>
       <div>
-        <Field name={"rememberMe"} type={"checkbox"} component={"input"} />{" "}
+        <Field name={"rememberMe"} type={"checkbox"} component={"input"} />
         Запомнить меня
       </div>
       <button>Войти</button>
@@ -19,7 +19,7 @@ const LoginForm = (props) => {
   );
 };
 
-const LoginREduxForm = reduxForm({
+const LoginReduxForm = reduxForm({
   form: "login", // уникальное имя формы
 })(LoginForm);
 
@@ -31,7 +31,7 @@ const Login = (props) => {
   return (
     <div>
       <h1>Login</h1>
-      <LoginREduxForm onSubmit={onSubmit} />
+      <LoginReduxForm onSubmit={onSubmit} />
     </div>
   );
 };

@@ -17,7 +17,6 @@ let initialState = {
       ava: "https://logo-logos.com/wp-content/uploads/2018/03/discord_icon_logo_remix.png",
     },
   ],
-  newPostText: "Новый текст",
   profile: null,
   status: "",
 };
@@ -27,21 +26,18 @@ const profileReducer = (state = initialState, action) => {
     case "ADD-POST": {
       return {
         ...state,
+        newPostText: "",
         posts: [
           ...state.posts,
           {
             id: 5,
-            message: state.newPostText,
+            message: action.newPostText,
             likeCount: 0,
             name: "Гость",
             ava: "https://i09.fotocdn.net/s113/81eac8fc2c1cb2e3/user_s/2551970780.jpg",
           },
         ],
-        newPostText: "",
       };
-    }
-    case "UPDATE-NEW-POST-TEXT": {
-      return { ...state, newPostText: action.newText };
     }
     case "SET-STATUS": {
       return { ...state, status: action.status };
@@ -54,11 +50,9 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPostActionCreator = () => ({ type: "ADD-POST" });
-
-export const updateNewPostTextActionCreator = (text) => ({
-  type: "UPDATE-NEW-POST-TEXT",
-  newText: text,
+export const addPostActionCreator = (newPostText) => ({
+  type: "ADD-POST",
+  newPostText,
 });
 
 export const setUserProfile = (profile) => ({
