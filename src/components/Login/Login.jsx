@@ -9,6 +9,7 @@ import {
 import { connect } from "react-redux";
 import { login } from "../../redux/authReducer";
 import { Redirect } from "react-router-dom";
+import s from "../common/FormsControls/FormsControls.module.css";
 
 const maxLength30 = maxLengthCreator(30);
 const minLength4 = minLengthCreator(4);
@@ -37,6 +38,7 @@ const LoginForm = (props) => {
         <Field name={"rememberMe"} type={"checkbox"} component={Input} />
         Запомнить меня
       </div>
+      {props.error && <div className={s.formSummaryError}>{props.error}</div>}
       <button>Войти</button>
     </form>
   );
