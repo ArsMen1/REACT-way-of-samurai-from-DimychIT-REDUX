@@ -9,7 +9,7 @@ const instance = axios.create({
 });
 
 export const userAPI = {
-  getUsers(currentPage = 1, pageSize = 10) {
+  reguestUsres(currentPage = 1, pageSize = 10) {
     return instance
       .get(`users?page=${currentPage}&count=${pageSize}`)
       .then((response) => response.data); // Возвращаем не весь респонс а только необходимые коспоненте данные

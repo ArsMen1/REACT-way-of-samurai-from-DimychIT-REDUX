@@ -78,10 +78,12 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
   userId,
 });
 
-export const getUsers = (currentPage, pageSize) => {
+export const reguestUsres = (currentPage, pageSize) => {
   return (dispatch) => {
     dispatch(toggleIsFethcing(true));
-    userAPI.getUsers(currentPage, pageSize).then((data) => {
+    // dispatch(setCurrentPage(currentPage)); Вроде и без этого норм работает...
+
+    userAPI.reguestUsres(currentPage, pageSize).then((data) => {
       dispatch(toggleIsFethcing(false));
       dispatch(setUsers(data.items));
       dispatch(setTotalUsersCount(data.totalCount));
@@ -93,7 +95,7 @@ export const getPageNumber = (pageNumber, pageSize) => {
   return (dispatch) => {
     dispatch(setCurrentPage(pageNumber));
     dispatch(toggleIsFethcing(true));
-    userAPI.getUsers(pageNumber, pageSize).then((data) => {
+    userAPI.reguestUsres(pageNumber, pageSize).then((data) => {
       dispatch(toggleIsFethcing(false));
       dispatch(setUsers(data.items));
       dispatch(setTotalUsersCount(data.totalCount));
