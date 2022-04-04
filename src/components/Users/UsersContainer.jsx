@@ -9,7 +9,6 @@ import {
   getPageNumber,
 } from "../../redux/usersReducer";
 import Users from "./Users";
-import withAuthRedirect from "../../hoc/withAuthRedirect";
 import Preloader from "../common/Preloader/Preloader";
 import { compose } from "redux";
 
@@ -53,7 +52,6 @@ let mapStateToProps = (state) => {
 };
 
 export default compose(
-  withAuthRedirect,
   connect(mapStateToProps, {
     follow,
     unfollow,
