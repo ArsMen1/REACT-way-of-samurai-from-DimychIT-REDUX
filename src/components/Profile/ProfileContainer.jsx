@@ -25,7 +25,7 @@ class ProfileContainer extends React.Component {
   render() {
     return (
       <Profile
-        {...this.props} // ЗАЧЕМ?
+        {...this.props}
         profile={this.props.profile}
         status={this.props.status}
         updateStatus={this.props.updateUserStatus}

@@ -32,7 +32,13 @@ const AddNewPostForm = reduxForm({
 
 const MyPosts = (props) => {
   const postsElement = props.posts.map((p) => (
-    <Post message={p.message} reiting={p.likeCount} name={p.name} ava={p.ava} />
+    <Post
+      message={p.message}
+      reiting={p.likeCount}
+      name={p.name}
+      ava={p.ava}
+      key={p.id}
+    />
   ));
 
   const addNewPost = (post) => {
